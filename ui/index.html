@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stash Creator</title>
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+    #app {
+        display: none; /* Hidden by default */
+    }
+    #stash-list-container {
+        display: none; /* Hidden by default */
+    }
+    #stash-details-container {
+        display: none; /* Hidden by default */
+    }
+</style>
+</head>
+<body>
+<div id="app">
+    <div class="container" id="stash-creator">
+        <div class="header">
+            <div class="title">STASH CREATOR</div>
+            <div class="close-btn" id="close-btn">×</div>
+        </div>
+        <div class="content">
+            <div class="form-group">
+                <label for="stash-id">STASH ID</label>
+                <input type="text" id="stash-id" placeholder="Enter a unique identifier">
+            </div>
+            <div class="form-group">
+                <label for="stash-label">STASH LABEL</label>
+                <input type="text" id="stash-label" placeholder="Display name for the stash">
+            </div>
+            <div class="form-row">
+                <div class="form-group half">
+                    <label for="stash-slots">SLOTS</label>
+                    <input type="number" id="stash-slots" placeholder="30" min="1" max="100">
+                </div>
+                <div class="form-group half">
+                    <label for="stash-weight">MAX WEIGHT (g)</label>
+                    <input type="number" id="stash-weight" placeholder="100000" min="1000" max="1000000">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="stash-personal">
+                    <label for="stash-personal">PERSONAL STASH</label>
+                </div>
+            </div>
+            <div class="form-group" id="citizen-id-container" style="display: none;">
+                <label for="stash-citizen-id">CITIZEN ID (OWNER)</label>
+                <input type="text" id="stash-citizen-id" placeholder="Enter citizen ID of the owner">
+            </div>
+            <div class="form-group">
+                <label for="stash-jobs">JOB ACCESS (comma separated)</label>
+                <input type="text" id="stash-jobs" placeholder="police:0,ambulance:2">
+            </div>
+            <div class="form-group">
+                <label for="stash-zone">ZONE DIMENSIONS</label>
+                <div class="zone-info">
+                    <div class="zone-item">
+                        <span>Width:</span>
+                        <span id="zone-width">1.0</span>
+                    </div>
+                    <div class="zone-item">
+                        <span>Length:</span>
+                        <span id="zone-length">1.0</span>
+                    </div>
+                    <div class="zone-item">
+                        <span>Height:</span>
+                        <span id="zone-height">1.0</span>
+                    </div>
+                    <div class="zone-item">
+                        <span>Rotation:</span>
+                        <span id="zone-rotation">0°</span>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                <button id="zone-btn" class="primary-btn">SET ZONE</button>
+                <button id="create-btn" class="primary-btn">CREATE STASH</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="stash-list-container">
+    <div class="container" id="stash-list">
+        <div class="header">
+            <div class="title">ACTIVE STASHES</div>
+            <div class="close-btn" id="close-list-btn" style="cursor: pointer; z-index: 1000;">×</div>
+        </div>
+        <div class="content">
+            <div class="search-bar">
+                <input type="text" id="stash-search" placeholder="Search stashes...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="stash-list-items" id="stash-list-items">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="stash-details-container">
+    <div class="container" id="stash-details">
+        <div class="header">
+            <div class="title">STASH DETAILS</div>
+            <div class="close-btn" id="close-details-btn" style="cursor: pointer; z-index: 1000;">×</div>
+        </div>
+        <div class="content">
+            <div class="details-grid" id="details-grid">
+            </div>
+            <div class="buttons">
+                <button id="edit-stash-btn" class="primary-btn">EDIT STASH</button>
+                <button id="delete-stash-btn" class="danger-btn">DELETE STASH</button>
+                <button id="teleport-stash-btn" class="secondary-btn">TELEPORT</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
+
